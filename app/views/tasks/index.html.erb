@@ -1,0 +1,17 @@
+<h1>Liste des taches</h1>
+
+<ul>
+  <% @tasks.each do |task| %>
+  <li>
+    <%= link_to task.title, task_path(task) %>
+    <% if task.completed %>
+    <i class="fa-solid fa-square-check"></i>
+    <% else %>
+    <i class="fa-regular fa-square"></i>
+    <% end%>
+  </li>
+  <% end %>
+</ul>
+
+<button><%= link_to "New Task", tasks_new_path %></button>
+<button><%= link_to "Delete checked",trash_path, data: {turbo_method: :delete} %></button>
